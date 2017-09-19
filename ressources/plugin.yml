@@ -1,0 +1,21 @@
+main: lowbrain.binding.main.LowbrainBinding
+name: LowbrainBinding
+version: 0.0.1
+author: Lowbrain
+description: Bind commands to simple click inventory event.
+depend: [LowbrainLibrary]
+permissions:
+    lb.binding.use:
+        description: Lets player use all binding commands
+        default: op
+commands:
+  bind:
+    description: Bind commands to your seperate inventory!
+  unbind:
+    description: Unbind commands you have assigned!
+  unbindall:
+    description: Unbinds all commands you have assigned!
+
+
+
+
