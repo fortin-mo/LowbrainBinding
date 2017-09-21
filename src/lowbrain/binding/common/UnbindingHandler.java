@@ -1,5 +1,6 @@
 package lowbrain.binding.common;
 
+import lowbrain.binding.main.LowbrainBinding;
 import lowbrain.library.command.Command;
 import lowbrain.library.command.CommandHandler;
 import lowbrain.library.fn;
@@ -28,7 +29,7 @@ public class UnbindingHandler extends CommandHandler {
         if (slot < Bind.MIN_SLOT || slot > Bind.MAX_SLOT)
             return Command.CommandStatus.INVALID;
 
-
+        ((LowbrainBinding)this.getPlugin()).getBindingManager().unbind((Player)who, slot);
 
         return Command.CommandStatus.VALID;
     }

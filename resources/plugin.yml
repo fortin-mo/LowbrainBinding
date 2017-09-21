@@ -8,6 +8,9 @@ permissions:
     lb.binding.use:
         description: Lets player use all binding commands
         default: op
+    lb.binding.save:
+        description: allow to save manually
+        default: op
 commands:
   bind:
     description: Bind commands to your seperate inventory!
@@ -15,7 +18,5 @@ commands:
     description: Unbind commands you have assigned!
   unbindall:
     description: Unbinds all commands you have assigned!
-
-
-
-
+  lbbind:
+    description: save bindings manually

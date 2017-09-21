@@ -1,5 +1,6 @@
 package lowbrain.binding.common;
 
+import lowbrain.binding.main.LowbrainBinding;
 import lowbrain.library.command.Command;
 import lowbrain.library.command.CommandHandler;
 import lowbrain.library.fn;
@@ -34,13 +35,14 @@ public class BindingHandler extends CommandHandler {
 
         if (args.length > 2) {
             arguments = new String[args.length - 2];
-            System.arraycopy(args, 1, arguments, 0, arguments.length);
+            System.arraycopy(args, 2, arguments, 0, arguments.length);
         } else {
             arguments = new String[0];
         }
 
-
         Bind bind = new Bind((Player)who, cmd, slot, arguments);
+
+        ((LowbrainBinding)this.getPlugin()).getBindingManager().bind((Player)who, bind);
 
         return Command.CommandStatus.VALID;
     }
