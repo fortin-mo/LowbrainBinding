@@ -1,12 +1,13 @@
 package lowbrain.binding.common;
 
+import lowbrain.binding.main.LowbrainBinding;
 import org.apache.commons.lang.NullArgumentException;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 
 public class Bind {
-    public final static int MAX_SLOT = 17;
     public final static int MIN_SLOT = 0;
+    public final static int MAX_SLOT = 36;
 
     private Player who;
     private String command;
@@ -22,7 +23,7 @@ public class Bind {
      */
     @Contract("null, _, _, _ -> fail; !null, null, _, _ -> fail")
     public Bind(Player who, String command, int slot, String[] args) {
-        if (who == null || command == null || command.trim().length() == 0 || slot < MIN_SLOT || slot > MAX_SLOT)
+        if (who == null || command == null || command.trim().length() == 0 || slot < MIN_SLOT || slot > Bind.getMaxSlot())
             throw new NullArgumentException("Invalid arguments !");
 
         this.who = who;
@@ -67,5 +68,11 @@ public class Bind {
 
     public String[] getArguments() {
         return arguments;
+    }
+
+    public final static int getMaxSlot() {
+        int slots = LowbrainBinding.getInstance().getConfig().getInt("maximum_bindings", MAX_SLOT);
+        slots = slots <= 0 ? 1 : slots > 36 ? 36 : slots;
+        return slots;
     }
 }

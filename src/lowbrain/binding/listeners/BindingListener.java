@@ -44,7 +44,7 @@ public class BindingListener implements Listener {
         if (!player.hasPermission("lb.binding.use"))
             return;
 
-        if (e.getSlot() == -999 && e.getInventory().getName().equalsIgnoreCase("container.crafting")) {
+        if (e.isLeftClick() && e.getSlot() == -999 && e.getInventory().getName().equalsIgnoreCase("container.crafting")) {
             Inventory inventory = createInventory(player);
             player.openInventory(inventory);
             player.updateInventory();
@@ -90,8 +90,19 @@ public class BindingListener implements Listener {
     private Inventory createInventory(Player player) {
         Inventory inventory = Bukkit.createInventory(player, 18, "Binds");
         HashMap<Integer, Bind> _binds = plugin.getBindingManager().getBinds(player);
-        for (int i = 0; i < 18; i++) {
-            ItemStack item = new ItemStack(Material.MONSTER_EGG, 1, (short)((i < 13 ? 50 : 90) + i));
+        for (int i = 0; i < Bind.getMaxSlot(); i++) {
+            Material material;
+
+            if (i <= 15)
+                material = Material.WOOL;
+            else if (i <= 30)
+                material = Material.BANNER;
+            else
+                material = Material.STAINED_GLASS;
+
+            short color = (short)(0 - (Math.floor(i / 15) * 15) + i);
+
+            ItemStack item = new ItemStack(material, 1, color);
             ItemMeta iMeta = item.getItemMeta();
 
             if (_binds.containsKey(i))

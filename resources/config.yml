@@ -1,0 +1,2 @@
+## set the maximum bindings possible between 1 and 36
+maximum_bindings: 18

@@ -85,4 +85,9 @@ public class LowbrainBinding extends JavaPlugin{
     public UnbindingHandler getUnbindingHandler() {
         return unbindingHandler;
     }
+
+    @Override
+    public YamlConfig getConfig() {
+        return config;
+    }
 }
