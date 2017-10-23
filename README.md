@@ -35,4 +35,6 @@ Each player can have up to 36 binds (maximum_bindings). Bind are saved in data.y
 
 To open the bind menu, player must first open their inventory and right clicking anywhere outside the current inventory. Then, the binds menu will open, listing all the player's binds.
 
+Hovering a bind with display the command (or slot# if empty). Clicking a bind will execute the command with arguments.
+
 *** need screetshot here ***
