@@ -39,12 +39,15 @@ public class BindingListener implements Listener {
 
     @EventHandler
     public void onInvClick(InventoryClickEvent e) {
+        if (!(e.getInventory().getHolder() instanceof Player))
+            return;
+
         Player player = (Player)e.getInventory().getHolder();
 
         if (!player.hasPermission("lb.binding.use"))
             return;
 
-        if (e.isLeftClick() && e.getSlot() == -999 && e.getInventory().getName().equalsIgnoreCase("container.crafting")) {
+        if (e.isRightClick() && e.getSlot() == -999 && e.getInventory().getName().equalsIgnoreCase("container.crafting")) {
             Inventory inventory = createInventory(player);
             player.openInventory(inventory);
             player.updateInventory();
