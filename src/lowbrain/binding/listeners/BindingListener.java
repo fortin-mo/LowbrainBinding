@@ -51,6 +51,7 @@ public class BindingListener implements Listener {
             Inventory inventory = createInventory(player);
             player.openInventory(inventory);
             player.updateInventory();
+            e.setCancelled(true);
             return;
         }
 
